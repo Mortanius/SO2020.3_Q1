@@ -9,10 +9,10 @@ public class MultiThreadedDivisorTester {
         this.number = number;
         if (threads > number - 2) {
             this.threads = (int) number - 2;
+            System.out.println("MultiThreadedSequenceDivisorTester:: Using " + this.threads + " threads");
         } else {
             this.threads = threads;
         }
-        System.out.println("MultiThreadedSequenceDivisorTester:: Using " + this.threads + " threads");
     }
     // Invocado pela classe Worker com sua threadId
     // Pode encerrar o loop com antecedencia quando o divisor (this.divisorFound) é encontrado externamente
@@ -35,10 +35,10 @@ public class MultiThreadedDivisorTester {
         @Override
         public void run() {
             boolean subResult = coordInstance.hasDivisorSubSequence(threadId);
-            if (subResult && coordInstance.divisorFound) {
+            if (subResult && !coordInstance.divisorFound) {
                 //System.out.printf("(Thread #%d) divisor found\n", threadId);
                 coordInstance.divisorFound = true;
-            } //else
+            }// else
                 //System.out.printf("(Thread #%d) NO divisor found\n", threadId);
         }
     }
@@ -54,7 +54,7 @@ public class MultiThreadedDivisorTester {
         for (Thread t : threadArr) {
             t.join();
         }
-        return false;
+        return divisorFound;
     }
     public boolean isPrime() throws InterruptedException {
         return !hasDivisor();

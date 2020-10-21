@@ -50,7 +50,7 @@ public class Main {
             start = System.currentTimeMillis();
             isPrimeNumber = DivisorTester.isPrime(n);
             end = System.currentTimeMillis();
-            System.out.printf("Número %d " + (isPrimeNumber ? "" : "não ") + "é primo\n", n);
+            System.out.printf("Numero %d " + (isPrimeNumber ? "" : "nao ") + "e primo\n", n);
             System.out.println("Tempo decorrido (Single-Threaded): " + (end - start));
         } else {
         //if (t > 1) {
@@ -59,7 +59,7 @@ public class Main {
                 start = System.currentTimeMillis();
                 isPrimeNumber = tester.isPrime();
                 end = System.currentTimeMillis();
-                System.out.printf("Número %d " + (isPrimeNumber ? "" : "não ") + "é primo\n", n);
+                System.out.printf("Numero %d " + (isPrimeNumber ? "" : "nao ") + "e primo\n", n);
                 System.out.println("Tempo decorrido (Multi-Threaded): " + (end - start));
             } catch (InterruptedException e) {
                 e.printStackTrace();
